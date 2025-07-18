@@ -1,0 +1,224 @@
+# 1. Find exposed .env files
+inurl:.env DB_PASSWORD
+
+# 2. Open S3 buckets
+intitle:"index of" "s3.amazonaws.com"
+
+# 3. Exposed SQL database dumps
+filetype:sql intext:"INSERT INTO" inurl:dump
+
+# 4. AWS access keys
+filetype:json intext:"AWS_ACCESS_KEY_ID"
+
+# 5. Git config files exposed
+intitle:"index of" ".git/config"
+
+# 6. Log files with credentials
+filetype:log intext:"password"
+
+# 7. PHP info pages
+intitle:"phpinfo()" "PHP Version"
+
+# 8. Jenkins dashboard exposure
+intitle:"Dashboard [Jenkins]"
+
+# 9. Swagger UI (API docs)
+inurl:/swagger-ui.html
+
+# 10. Env files with passwords
+inurl:.env intext:DB_PASSWORD
+
+# 11. Firebase database leaks
+inurl:.firebaseio.com
+
+# 12. Google Drive links with sensitive data
+site:drive.google.com confidential
+
+# 13. Indexes with backup files
+intitle:"index of" backup
+
+# 14. Sensitive PDFs
+filetype:pdf confidential | password | internal use only
+
+# 15. WordPress wp-config exposure
+inurl:wp-config.php -github
+
+# 16. Log files with tokens
+filetype:log intext:"auth_token"
+
+# 17. Bitbucket credentials
+site:bitbucket.org password
+
+# 18. Public Trello boards with secrets
+site:trello.com "api key"
+
+# 19. SQL errors
+intext:"You have an error in your SQL syntax"
+
+# 20. MongoDB exposed instances
+intitle:"MongoDB" inurl:28017
+
+# 21. Jira public tickets
+site:jira.* intitle:"issue" intext:"password"
+
+# 22. Open redirect parameters
+inurl:redir? url=http
+
+# 23. Public changelogs with version info
+intitle:"changelog" inurl:changelog.txt
+
+# 24. Open FTP servers
+intitle:"index of" inurl:ftp
+
+# 25. Elasticsearch dashboards
+intitle:"kibana" inurl:5601
+
+# 26. Pastebin credentials
+site:pastebin.com "password"
+
+# 27. Google Groups sensitive content
+site:groups.google.com confidential
+
+# 28. Configuration files exposed
+intitle:"index of" ".config"
+
+# 29. Development notes
+intext:"TODO" filetype:txt
+
+# 30. .bash_history files
+intitle:"index of" ".bash_history"
+
+# 31. Open GraphQL playgrounds
+inurl:/graphql
+
+# 32. PDF signatures & contracts
+filetype:pdf intext:"signature" intext:"agreement"
+
+# 33. Signed employment contracts
+filetype:pdf intext:"non-disclosure" intext:"employee signature"
+
+# 34. Vulnerable parameters
+inurl:?id= intext:"sql"
+
+# 35. Config backup files
+filetype:bak inurl:config
+
+# 36. .DS_Store Mac metadata
+intitle:"index of" ".DS_Store"
+
+# 37. Code repos in ZIPs
+intitle:"index of" "src.zip"
+
+# 38. Old admin panels
+intitle:"admin login" -site:github.com
+
+# 39. Internal network documentation
+filetype:pdf "internal network" "confidential"
+
+# 40. HR documents
+filetype:xlsx intext:"SSN" OR intext:"salary"
+
+# 41. Secrets in shell scripts
+filetype:sh password
+
+# 42. PGP private keys
+-----BEGIN PGP PRIVATE KEY BLOCK-----
+
+# 43. Hidden camera dashboards
+intitle:"Live View / - AXIS"
+
+# 44. Jenkins credentials.xml
+inurl:credentials.xml
+
+# 45. htpasswd files
+filetype:htpasswd
+
+# 46. GitHub token leaks
+site:github.com intext:"ghp_" intext:"token"
+
+# 47. Android keystore files
+filetype:keystore
+
+# 48. Apache server-status
+intitle:"Apache Status"
+
+# 49. Public Elastic Stack
+intitle:"Kibana" inurl:app/kibana
+
+# 50. Env files in Laravel apps
+inurl:.env intext:APP_KEY
+
+# 51. YAML config with secrets
+filetype:yaml password
+
+# 52. Database credentials in INI files
+filetype:ini intext:"db_password"
+
+# 53. Signed invoice documents
+filetype:pdf intext:"invoice" intext:"signature"
+
+# 54. Exposed web.config files
+inurl:web.config filetype:config
+
+# 55. VPN credentials in logs
+filetype:log intext:vpn intext:password
+
+# 56. API keys in .js files
+filetype:js intext:"apiKey"
+
+# 57. GitLab CI/CD tokens
+filetype:yaml intext:"CI_JOB_TOKEN"
+
+# 58. Database dumps in archives
+filetype:zip intext:dump.sql
+
+# 59. FTP config files
+filetype:xml intext:ftp intext:password
+
+# 60. Signed privacy agreements
+filetype:pdf intext:"privacy policy" intext:"signature"
+
+# 61. exposed SQLLite files
+filetype:db
+
+# 62. Signed NDAs
+filetype:pdf intext:"non-disclosure agreement" intext:"signature"
+
+# 63. Passwords in JSON files
+filetype:json intext:"password"
+
+# 64. Outlook PST backups
+filetype:pst
+
+# 65. Email archives
+filetype:mbox
+
+# 66. License keys in txt
+filetype:txt intext:"license key"
+
+# 67. Database configs in .cnf
+filetype:cnf intext:"db_user"
+
+# 68. Drupal settings files
+filetype:php inurl:settings.php
+
+# 69. Auth tokens in HTML
+filetype:html intext:"authToken"
+
+# 70. Signed PDFs from universities
+filetype:pdf intext:"Dean" intext:"signature"
+
+# 71. CPanel login pages
+inurl:cpanel intitle:"login"
+
+# 72. Plesk control panels
+intitle:"Plesk" inurl:login_up.php
+
+# 73. Microsoft Teams chat leaks
+site:teams.microsoft.com intext:"confidential"
+
+# 74. PDF files marked "not for public"
+filetype:pdf intext:"not for public release"
+
+# 75. Internal audit reports
+filetype:pdf "internal audit" "confidential"
